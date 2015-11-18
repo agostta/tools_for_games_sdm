@@ -26,38 +26,43 @@ public class DiceActivity extends AppCompatActivity {
 
     //Eventos de Touch na tela irá rolar os dados
     @Override
-    public boolean onTouchEvent(MotionEvent e) {
+    public boolean onTouchEvent(MotionEvent event) {
 
-        playSound();
-        int number = rollDices();
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            playSound();
+            int number = rollDices();
+            ImageView viewById = (ImageView) findViewById(R.id.dice_view);
 
-        ImageView viewById = (ImageView) findViewById(R.id.dice_view);
-
-        //Escolhe uma face do dado de acordo com o range de 1 a 6
-        switch (number) {
-            case 1:
-            viewById.setImageResource(R.drawable.dice1);
-                break;
-            case 2:
-            viewById.setImageResource(R.drawable.dice2);
-                break;
-            case 3:
-            viewById.setImageResource(R.drawable.dice3);
-                break;
-            case 4:
-            viewById.setImageResource(R.drawable.dice4);
-                break;
-            case 5:
-            viewById.setImageResource(R.drawable.dice5);
-                break;
-            case 6:
-            viewById.setImageResource(R.drawable.dice6);
-                break;
-            default:
-                Toast.makeText(this, "Algo errado! Toque novamente :(", Toast.LENGTH_SHORT).show();
-                break;
+            //Escolhe uma face do dado de acordo com o range de 1 a 6
+            switch (number) {
+                case 1:
+                    viewById.setImageResource(R.drawable.dice1);
+                    break;
+                case 2:
+                    viewById.setImageResource(R.drawable.dice2);
+                    break;
+                case 3:
+                    viewById.setImageResource(R.drawable.dice3);
+                    break;
+                case 4:
+                    viewById.setImageResource(R.drawable.dice4);
+                    break;
+                case 5:
+                    viewById.setImageResource(R.drawable.dice5);
+                    break;
+                case 6:
+                    viewById.setImageResource(R.drawable.dice6);
+                    break;
+                default:
+                    Toast.makeText(this, "Algo errado! Toque novamente :(", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
-        Toast.makeText(this, "Toque na tela para rolar os dados.", Toast.LENGTH_SHORT).show();
+
+        if(event.getAction()==MotionEvent.ACTION_UP){
+            Toast.makeText(this, "Toque na tela para rolar os dados.", Toast.LENGTH_SHORT).show();
+        }
+
         return true;
     }
 
