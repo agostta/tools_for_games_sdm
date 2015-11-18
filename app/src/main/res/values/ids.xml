@@ -2,4 +2,5 @@
 <resources>
     <item name="image_action_dice" type="id">image_action_dice</item>
     <item name="image_action_chess" type="id">image_action_chess</item>
+    <item name="image_main" type="id" />
 </resources>
