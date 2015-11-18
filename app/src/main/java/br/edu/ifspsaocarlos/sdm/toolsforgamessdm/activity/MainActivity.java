@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //Capitura o click no item Chess no menu
-        if (id == R.id.action_chess){
-
+        if (id == R.id.action_hourglass){
+            Intent hourglass = new Intent(getApplicationContext(), HourglassActivity.class);
+            startActivityForResult(hourglass, 1);
         }
-
-        if (id == R.id.action_dice){
+        else if (id == R.id.action_dice){
 
             Intent dice = new Intent(getApplicationContext(), DiceActivity.class);
             startActivityForResult(dice, 1);

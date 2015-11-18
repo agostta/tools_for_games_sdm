@@ -23,6 +23,11 @@
             android:label="@string/title_activity_dice"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".activity.HourglassActivity"
+            android:label="@string/title_activity_hourglass"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

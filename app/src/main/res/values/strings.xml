@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">4Games</string>
+
     <string name="action_settings">Settings</string>
     <string name="action_dice">Dices</string>
     <string name="action_chess">Chess</string>
+    <string name="action_hourglass">Hourglass</string>
+
     <string name="title_activity_dice">Dices</string>
+    <string name="title_activity_hourglass">HourglassActivity</string>
+
 </resources>
