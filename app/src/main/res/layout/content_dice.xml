@@ -10,24 +10,9 @@
     tools:showIn="@layout/activity_dice"
     tools:context="br.edu.ifspsaocarlos.sdm.toolsforgamessdm.activity.DiceActivity">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/dice_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <SeekBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
-            android:layout_weight="10"
-            android:max="10"
-            android:scaleX="1" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/dice_activity_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 </RelativeLayout>
