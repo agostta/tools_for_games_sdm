@@ -15,7 +15,7 @@ public class ChessActivity extends AppCompatActivity {
 
     private Button buttonPlayer1;
     private Button buttonPlayer2;
-    private CountDownTimer timer;
+    private ChessTimer timer;
     private int playerTurn = -1;
 
     @Override
@@ -31,14 +31,47 @@ public class ChessActivity extends AppCompatActivity {
         timer = new ChessTimer();
     }
 
+
+
+    public void onPlayerCLick(View view){
+        if(playerTurn == -1){
+            clearButtons();
+            playerTurn = view.equals(buttonPlayer1) ? 1 : 2;
+            timer.start((Button)view);
+        }
+        else{
+
+            //jogador cuja não é a vez clicou no botão
+            if( (view.equals(buttonPlayer2) && playerTurn == 1) || (view.equals(buttonPlayer1) && playerTurn == 2)){
+                return;
+            }
+
+           change();
+        }
+    }
+
+    /**
+     *
+     * Limpa o texto dos botões
+     */
+    private void clearButtons(){
+        buttonPlayer1.setText("");
+        buttonPlayer2.setText("");
+    }
+
     /**
      *
      * Inverte os jogadores
      *
      */
     private void change(){
+        playerTurn = playerTurn == 1 ? 2 : 1;
+        timer.cancel();
+        clearButtons();
 
+        timer.start(playerTurn == 1 ? buttonPlayer1 : buttonPlayer2);
     }
+
 
     private class ChessTimer extends CountDownTimer{
         private final static int DURATION = 120000; //2min
@@ -48,8 +81,9 @@ public class ChessActivity extends AppCompatActivity {
             super(DURATION, 1000);
         }
 
-        public void setButtonPrint(Button buttonPrint){
+        public void start(Button buttonPrint){
             this.buttonPrint = buttonPrint;
+            super.start();
         }
 
         public void onTick(long millisUntilFinished) {
@@ -64,5 +98,6 @@ public class ChessActivity extends AppCompatActivity {
             change();
         }
     }
+
 }
 

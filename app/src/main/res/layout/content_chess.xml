@@ -24,7 +24,8 @@
             android:layout_height="fill_parent"
             android:text="Player 2\n(Click to start)"
             android:id="@+id/buttonPlayer1"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:onClick="onPlayerCLick" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,7 +38,8 @@
             android:layout_height="fill_parent"
             android:text="Player 1\n(Click to start)"
             android:id="@+id/buttonPlayer2"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:onClick="onPlayerCLick"/>
     </LinearLayout>
 
 
