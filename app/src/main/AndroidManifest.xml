@@ -28,6 +28,11 @@
             android:label="@string/title_activity_hourglass"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".activity.ChessActivity"
+            android:label="@string/title_activity_chess"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

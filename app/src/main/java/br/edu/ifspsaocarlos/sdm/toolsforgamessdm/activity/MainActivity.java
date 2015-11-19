@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
             Intent hourglass = new Intent(getApplicationContext(), HourglassActivity.class);
             startActivityForResult(hourglass, 1);
         }
+        else if (id == R.id.action_chess){
+            Intent chess = new Intent(getApplicationContext(), ChessActivity.class);
+            startActivityForResult(chess, 1);
+        }
         else if (id == R.id.action_dice){
 
             Intent dice = new Intent(getApplicationContext(), DiceActivity.class);

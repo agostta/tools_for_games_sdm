@@ -8,5 +8,6 @@
 
     <string name="title_activity_dice">Dices</string>
     <string name="title_activity_hourglass">HourglassActivity</string>
+    <string name="title_activity_chess">ChessActivity</string>
 
 </resources>
