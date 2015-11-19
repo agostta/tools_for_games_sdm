@@ -9,22 +9,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <ImageView android:id="@id/image_action_chess"
+        <ImageView android:id="@id/image_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/chess"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            android:src="@drawable/boardgames"/>
 
-        <ImageView android:id="@id/image_action_dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dices"/>
-    </LinearLayout>
 </RelativeLayout>
