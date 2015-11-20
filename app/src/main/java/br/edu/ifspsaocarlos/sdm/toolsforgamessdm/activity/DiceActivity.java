@@ -21,6 +21,7 @@ public class DiceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Mensagem informativa para o usuário
         Toast.makeText(this, "Toque na tela para rolar os dados.", Toast.LENGTH_SHORT).show();
     }
 
@@ -28,6 +29,7 @@ public class DiceActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
+        //Evento de Touch Down
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             playSound();
             int number = rollDices();
@@ -82,5 +84,7 @@ public class DiceActivity extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.roll_dices);
         mp.start();
     }
+
+
 
 }

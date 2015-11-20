@@ -29,31 +29,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        //Recupera o ID do Menu ITEM
         int id = item.getItemId();
 
-        //Capitura o click no item Chess no menu
+        //Capitura o click no item Hourglass no menu
         if (id == R.id.action_hourglass){
             Intent hourglass = new Intent(getApplicationContext(), HourglassActivity.class);
             startActivityForResult(hourglass, 1);
-        }
+        }//Capitura o click no item Chess no menu
         else if (id == R.id.action_chess){
-            Intent chess = new Intent(getApplicationContext(), ChessActivity.class);
+            Intent chess = new Intent(getApplicationContext(), ChessSettingsActivity.class);
             startActivityForResult(chess, 1);
-        }
+        }//Capitura o click no item Dice no menu
         else if (id == R.id.action_dice){
-
             Intent dice = new Intent(getApplicationContext(), DiceActivity.class);
             startActivityForResult(dice, 1);
 
         }
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }
