@@ -33,16 +33,15 @@ public class ChessActivity extends AppCompatActivity {
         //Verifica se existe tempo selecionado, senão utiliza o tempo padrão
         if (getIntent().hasExtra("chessTime")){
             int chessTime = (int) getIntent().getSerializableExtra("chessTime");
-            chessTime = chessTime*1000;
-            timer = new ChessTimer(chessTime);
+            timer = new ChessTimer(chessTime*1000);
         }else {
             Toast.makeText(this, DEFAULT_DURATION_INFO, Toast.LENGTH_SHORT).show();
             timer = new ChessTimer();
         }
     }
 
-    
-    public void onPlayerCLick(View view){
+    //Jogador clica para parar o tempo
+    public void onPlayerClick(View view){
         if(playerTurn == -1){
             clearButtons();
             playerTurn = view.equals(buttonPlayer1) ? 1 : 2;
