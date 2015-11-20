@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import br.edu.ifspsaocarlos.sdm.toolsforgamessdm.R;
 
 public class ChessActivity extends AppCompatActivity {
+
+    public static final String DEFAULT_DURATION_INFO = "Tempo padrão de 2 min.";
 
     private Button buttonPlayer1;
     private Button buttonPlayer2;
@@ -27,10 +30,13 @@ public class ChessActivity extends AppCompatActivity {
         buttonPlayer1 = (Button)findViewById(R.id.buttonPlayer1);
         buttonPlayer2 = (Button)findViewById(R.id.buttonPlayer2);
 
+        //Verifica se existe tempo selecionado, senão utiliza o tempo padrão
         if (getIntent().hasExtra("chessTime")){
             int chessTime = (int) getIntent().getSerializableExtra("chessTime");
+            chessTime = chessTime*1000;
             timer = new ChessTimer(chessTime);
         }else {
+            Toast.makeText(this, DEFAULT_DURATION_INFO, Toast.LENGTH_SHORT).show();
             timer = new ChessTimer();
         }
     }
@@ -76,14 +82,14 @@ public class ChessActivity extends AppCompatActivity {
     }
 
     private class ChessTimer extends CountDownTimer{
-        private final static int DURATION = 120000; //2min
+        private final static int DEFAULT_DURATION = 120000; //2min
         private Button buttonPrint;
 
-        public ChessTimer(){
-            super(DURATION, 1000);
+        public ChessTimer() {
+            super(DEFAULT_DURATION, 1000);
         }
 
-        public ChessTimer(int chessTime) {
+        public ChessTimer(final int chessTime) {
             super(chessTime, 1000);
         }
 

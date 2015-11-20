@@ -14,6 +14,9 @@ import br.edu.ifspsaocarlos.sdm.toolsforgamessdm.R;
 
 public class DiceActivity extends AppCompatActivity {
 
+    public static final String TEXT = "Toque na tela para rolar os dados.";
+    public static final String SOMETHING_WRONG = "Algo errado! Toque novamente :(";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +59,13 @@ public class DiceActivity extends AppCompatActivity {
                     viewById.setImageResource(R.drawable.dice6);
                     break;
                 default:
-                    Toast.makeText(this, "Algo errado! Toque novamente :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, SOMETHING_WRONG, Toast.LENGTH_SHORT).show();
                     break;
             }
         }
 
         if(event.getAction()==MotionEvent.ACTION_UP){
-            Toast.makeText(this, "Toque na tela para rolar os dados.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, TEXT, Toast.LENGTH_SHORT).show();
         }
 
         return true;
