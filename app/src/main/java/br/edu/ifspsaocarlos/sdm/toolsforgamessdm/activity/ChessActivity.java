@@ -18,6 +18,7 @@ public class ChessActivity extends AppCompatActivity {
     private Button buttonPlayer2;
     private ChessTimer timer;
     private int playerTurn = -1;
+    private int chessTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ChessActivity extends AppCompatActivity {
 
         //Verifica se existe tempo selecionado, senão utiliza o tempo padrão
         if (getIntent().hasExtra("chessTime")){
-            int chessTime = (int) getIntent().getSerializableExtra("chessTime");
+            chessTime = (int) getIntent().getSerializableExtra("chessTime");
             timer = new ChessTimer(chessTime*1000);
         }else {
             Toast.makeText(this, DEFAULT_DURATION_INFO, Toast.LENGTH_SHORT).show();
@@ -43,7 +44,7 @@ public class ChessActivity extends AppCompatActivity {
     //Jogador clica para parar o tempo
     public void onPlayerClick(View view){
         if(playerTurn == -1){
-            clearButtons();
+            //clearButtons();
             playerTurn = view.equals(buttonPlayer1) ? 1 : 2;
             timer.start((Button)view);
         }
@@ -75,7 +76,7 @@ public class ChessActivity extends AppCompatActivity {
     private void change(){
         playerTurn = playerTurn == 1 ? 2 : 1;
         timer.cancel();
-        clearButtons();
+        //clearButtons();
 
         timer.start(playerTurn == 1 ? buttonPlayer1 : buttonPlayer2);
     }
@@ -109,6 +110,5 @@ public class ChessActivity extends AppCompatActivity {
             change();
         }
     }
-
 }
 
