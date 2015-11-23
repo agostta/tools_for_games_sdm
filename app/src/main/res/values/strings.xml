@@ -12,7 +12,7 @@
     <string name="title_activity_chess_settings">Time Settings</string>
 
     <string name="txt_continue">Continuar</string>
-    <string name="label_chess_time">Tempo(segundos)</string>
-    <string name="player_1">Player 1\n(Click to start)</string>
-    <string name="player_2">Player 2\n(Click to start)</string>
+    <string name="label_chess_time">Tempo(minutos)</string>
+    <string name="player_1">White</string>
+    <string name="player_2">Black</string>
 </resources>
