@@ -1,5 +1,6 @@
 package br.edu.ifspsaocarlos.sdm.toolsforgamessdm.activity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,6 @@ public class ChessActivity extends AppCompatActivity {
     private ChessTimer black;
     private int playerTurn = -1;
     private int chessTime;
-    private Button button;
     private boolean firstTurnWhite = false;
     private boolean firstTurnBlack = false;
 
@@ -47,20 +47,29 @@ public class ChessActivity extends AppCompatActivity {
             Toast.makeText(this, DEFAULT_DURATION_INFO, Toast.LENGTH_SHORT).show();
             chessTime = DEFAULT_DURATION * 60000;
         }
+        //Inicializa osbotões e os timers
         buttonPlayer1.setText(formatTime(chessTime));
         buttonPlayer2.setText(formatTime(chessTime));
         white = new ChessTimer(chessTime);
         black =new ChessTimer(chessTime);
     }
 
-    //Formata o tempo para string
+    /**
+     * Formata o tempo para string
+     * @param chessTime
+     * @return
+     *      String formatada Ex: '23:01'
+     */
     private String formatTime(int chessTime) {
         String min = String.format("%02d", chessTime / 60000);
         int seg = (chessTime % 60000) / 1000;
         return String.format("%s:%02d", min, seg);
     }
 
-    //Jogador clica para parar o tempo
+    /**
+     * Jogador clica para parar o tempo
+     * @param view
+     */
     public void onPlayerClick(View view) {
         if (playerTurn == -1) {
             playerTurn = view.equals(buttonPlayer1) ? 1 : 2;
@@ -73,6 +82,11 @@ public class ChessActivity extends AppCompatActivity {
                 firstTurnWhite = true;
             }
         } else {
+            //jogo acabado por tempo
+            if(playerTurn==-2){
+                Toast.makeText(this, TIME_FINISH, Toast.LENGTH_SHORT).show();
+                return;
+            }
             //jogador cuja não é a vez clicou no botão
             if ((view.equals(buttonPlayer2) && playerTurn == 1) || (view.equals(buttonPlayer1) && playerTurn == 2)) {
                 return;
@@ -120,11 +134,30 @@ public class ChessActivity extends AppCompatActivity {
         }
     }
 
-    //Mostra a mensagem de tempo acabado
-    private void showMessage() {
+    /**
+     * Zera o cronômetro;
+     * Toca o som do sino;
+     * Mostra a mensagem de tempo acabado;
+     * Seta o turno como Finalizado
+     */
+    private void finish(Button buttonPrint) {
+        buttonPrint.setText("00:00");
+        playSound();
         Toast.makeText(this, TIME_FINISH, LENGTH_LONG).show();
+        playerTurn=-2;
     }
 
+    /**
+     * Tocar som de sinos ao acabar
+     */
+    private void playSound() {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.bell);
+        mp.start();
+    }
+
+    /**
+     * Classe para os timers dos jogadores
+     */
     private class ChessTimer extends CountDownTimer {
         private Button buttonPrint;
 
@@ -132,19 +165,29 @@ public class ChessActivity extends AppCompatActivity {
             super(chessTime, 1000);
         }
 
+        /**
+         * Inicializa a contagem quando um botão é precionado
+         * @param buttonPrint
+         */
         public void start(Button buttonPrint) {
             this.buttonPrint = buttonPrint;
             super.start();
         }
 
+        /**
+         * Update da informações nos botões
+         * @param millisUntilFinished
+         */
         public void onTick(long millisUntilFinished) {
             buttonPrint.setText(formatTime((int) millisUntilFinished));
         }
 
+        /**
+         * Quando acabar chama o método de finalizar
+         */
         @Override
         public void onFinish() {
-            showMessage();
-
+            finish(buttonPrint);
         }
     }
 

@@ -28,7 +28,11 @@ public class DiceActivity extends AppCompatActivity {
         Toast.makeText(this, "Toque na tela para rolar os dados.", Toast.LENGTH_SHORT).show();
     }
 
-    //Eventos de Touch na tela irá rolar os dados
+    /**
+     * Eventos de Touch na tela irá rolar os dados
+     * @param event
+     * @return
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -71,7 +75,11 @@ public class DiceActivity extends AppCompatActivity {
         return true;
     }
 
-    //Sortear um numero de 1 a 6
+    /**
+     * Sortear um numero de 1 a 6
+     * @return
+     *      Número randômico de 1a 6
+     */
     public int rollDices() {
         Random rn = new Random();
         int maximum = 6;
@@ -82,7 +90,9 @@ public class DiceActivity extends AppCompatActivity {
         return randomNum;
     }
 
-    //Tocar som dos dados Rolando
+    /**
+     * Tocar som dos dados Rolando
+     */
     private void playSound() {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.roll_dices);
         mp.start();

@@ -23,7 +23,10 @@ public class ChessSettingsActivity extends AppCompatActivity {
         Toast.makeText(this, MESSAGE_INFO, Toast.LENGTH_LONG).show();
     }
 
-    //Inicia acontagem apos a escolhado tempo
+    /**
+     * Inicia acontagem apos a escolhado tempo
+     * @param view
+     */
     public void onClickStart(View view){
         Intent chess = new Intent(getApplicationContext(), ChessActivity.class);
         EditText time = (EditText) findViewById(R.id.time_durtion);
@@ -32,6 +35,7 @@ public class ChessSettingsActivity extends AppCompatActivity {
         if(!time.getText().toString().isEmpty()) {
             chess.putExtra("chessTime", Integer.valueOf(time.getText().toString()));
         }
+        //Envia o parâmetro para a activity
         startActivityForResult(chess, 1);
     }
 
